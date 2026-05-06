@@ -134,3 +134,156 @@ cd*
 cd
 ./run_tmp.sh 
 tmux -S /tmp/osmocom_tmux attach  
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+tail -f /root/qemu.log
+/opt/GSM/osmocom-bb/src/host/osmocon/osmocon -m romload -i 100 -p /dev/pts/1 -s /tmp/osmocom_l2 /opt/GSM/firmware/board/compal_e88/layer1.highram.bin -d tr 2>&1 | tee /tmp/osmocon.log
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+/opt/GSM/osmocom-bb/src/host/osmocon/osmocon -m romload -i 100 -p /dev/pts/1 -s /tmp/osmocom_l2 /opt/GSM/firmware/board/compal_e88/layer1.highram.bin -d tr 2>&1 | tee /tmp/osmocon.log
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+/opt/GSM/osmocom-bb/src/host/osmocon/osmocon -m romload -i 100 -p /dev/pts/1 -s /tmp/osmocom_l2 /opt/GSM/firmware/board/compal_e88/layer1.highram.bin -d tr 2>&1 | tee /tmp/osmocon.log
+tail -f /root/qemu.log
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+tail -f /root/qemu.log
+/opt/GSM/osmocom-bb/src/host/osmocon/osmocon -m romload -i 100 -p /dev/pts/1 -s /tmp/osmocom_l2 /opt/GSM/firmware/board/compal_e88/layer1.highram.bin -d tr 2>&1 | tee /tmp/osmocon.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+clear
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+nano /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+nano /root/.osmocom/bb/mobile_group1.cfg 
+nano /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+/opt/GSM/osmocom-bb/src/host/osmocon/osmocon -m romload -i 100 -p /dev/pts/2 -s /tmp/osmocom_l2 /opt/GSM/firmware/board/compal_e88/layer1.highram.bin -d tr 2>&1 | tee /tmp/osmocon.log
+cd /opt/GSM/qemu-src
+./run_si.sh 
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+/opt/GSM/osmocom-bb/src/host/osmocon/osmocon -m romload -i 100 -p /dev/pts/2 -s /tmp/osmocom_l2 /opt/GSM/firmware/board/compal_e88/layer1.highram.bin -d tr 2>&1 | tee /tmp/osmocon.log
+cd /opt/GSM/qemu-src
+nano run_si.sh 
+./run_si.sh 
+nano run_si.sh 
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+/opt/GSM/osmocom-bb/src/host/osmocon/osmocon -m romload -i 100 -p /dev/pts/2 -s /tmp/osmocom_l2 /opt/GSM/firmware/board/compal_e88/layer1.highram.bin -d tr 2>&1 | tee /tmp/osmocon.log
+cd /opt/GSM/qemu-src
+./run_si.sh 
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+/opt/GSM/osmocom-bb/src/host/osmocon/osmocon -m romload -i 100 -p /dev/pts/2 -s /tmp/osmocom_l2 /opt/GSM/firmware/board/compal_e88/layer1.highram.bin -d tr 2>&1 | tee /tmp/osmocon.log
+cd /opt/GSM/qemu-src
+./run_si.sh 
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+nano /etc/osmocom/osmo-bsc.cfg 
+nano /etc/osmocom/osmo-bts-trx.
+nano /etc/osmocom/osmo-bts-trx.cfg 
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+/opt/GSM/osmocom-bb/src/host/osmocon/osmocon -m romload -i 100 -p /dev/pts/2 -s /tmp/osmocom_l2 /opt/GSM/firmware/board/compal_e88/layer1.highram.bin -d tr 2>&1 | tee /tmp/osmocon.log
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+cd /opt/GSM/qemu-src
+./run_si.sh 
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+nano /etc/osmocom/osmo-bsc.cfg 
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+/opt/GSM/osmocom-bb/src/host/osmocon/osmocon -m romload -i 100 -p /dev/pts/2 -s /tmp/osmocom_l2 /opt/GSM/firmware/board/compal_e88/layer1.highram.bin -d tr 2>&1 | tee /tmp/osmocon.log
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+nano /root/.osmocom/bb/mobile_group1.cfg 
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+/opt/GSM/osmocom-bb/src/host/osmocon/osmocon -m romload -i 100 -p /dev/pts/2 -s /tmp/osmocom_l2 /opt/GSM/firmware/board/compal_e88/layer1.highram.bin -d tr 2>&1 | tee /tmp/osmocon.log
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+nano /root/.osmocom/bb/mobile_group1.cfg
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+/opt/GSM/osmocom-bb/src/host/osmocon/osmocon -m romload -i 100 -p /dev/pts/2 -s /tmp/osmocom_l2 /opt/GSM/firmware/board/compal_e88/layer1.highram.bin -d tr 2>&1 | tee /tmp/osmocon.log
+sleep 3 && mobile -c /root/.osmocom/bb/mobile_group1.cfg -d DRR,DMM,DCC,DLAPDM,DCS,DSAP,DPAG,DL1C,DSUM,DSI,DRSL,DNM 2>&1 | tee /tmp/mobile.log
+tail -f /root/qemu.log
+sleep 5 && tcpdump -i eth1 -w /root/mobile-gsmtap.pcap udp port 4729
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg
+python3 /opt/GSM/qemu-src/scripts/rsl_si_tap.py 2>&1 | tee /tmp/rsl_si_tap.log
+python3 /opt/GSM/qemu-src/bridge.py 2>&1 | tee /tmp/bridge.log
+cd /opt/GSM/qemu-src
+./run_si.sh 
+nano /etc/osmocom/osmo-bts.cfg 
+nano /etc/osmocom/osmo-bts-trx.cfg 
+nano /etc/osmocom/osmo-bsc.cfg 
+./run_si.sh 
+nano /etc/osmocom/osmo-bsc.cfg 
+./run_si.sh *
+./run_si.sh *=
+./run_si.sh 
+nano /etc/osmocom/osmo-bsc.cfg 
+nano /etc/osmocom/osmo-bts-trx.cfg 
+./run_si.sh 
+nano /etc/osmocom/osmo-bsc.cfg 
+nano /etc/osmocom/osmo-bts-trx.cfg 
+nano /etc/osmocom/osmo-bsc.cfg 
+nano /etc/osmocom/osmo-bts-trx.cfg 
+service osmo-bsc status
+nano /etc/osmocom/osmo-bsc.cfg 
+nano /etc/osmocom/osmo-bts-trx.cfg 
+osmo-bts-trx -c /etc/osmocom/osmo-bts-trx.cfg 
+nano /etc/osmocom/osmo-bts-trx.cfg 
+nano /etc/osmocom/osmo-bsc.cfg 
+nano /etc/osmocom/osmo-bts-trx.cfg 
+nano /etc/osmocom/osmo-bsc.cfg 
+./run_si.sh 
